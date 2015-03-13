@@ -1,0 +1,3 @@
+<h1>Albums index</h1>
+<%= render 'shared/index', label: :name , indexed: @albums%>
+<%= button_to 'Create a Band', new_band_album_url(1), method: :get %>

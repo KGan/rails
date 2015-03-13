@@ -1,0 +1,4 @@
+<h1><%= @band.name %></h1>
+
+<%= render 'shared/index', indexed: @band.albums %>
+<%= button_to("Add Album to #{@band.name}", new_band_album_url(@band), method: :get) %>

@@ -1,0 +1,9 @@
+<h1>Bands#new</h1>
+
+<form action="<%= bands_url %>" method="POST">
+  <%= csrf_inject %>
+  <label> Select Band Name
+    <input type="text" name="band[name]" />
+  </label>
+  <input type="submit" value="Create New Band"
+</form>

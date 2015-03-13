@@ -1,0 +1,25 @@
+<h1>New Album</h1>
+
+<form action="<%= albums_url %>" method="POST">
+  <%= csrf_inject %>
+  <label> Album Title
+    <input type="text" name="album[title]" />
+  </label> <br>
+  <label> Band
+    <select name="album[band_id]">
+      <% Band.all.each do |band| %>
+        <option value="<%= band.id %>"
+         <% if @band.id == band.id %> selected="selected" <% end %>
+        ><%= band.name %></option>
+      <% end %>
+    </select>
+  </label> <br>
+  <label> Recording Type
+    <select name="album[recording_type]">
+      <% Album::RECORD_TYPES.each do |typez| %>
+        <option value="<%= typez %>"><%= typez %></option>
+      <% end %>
+    </select>
+  </label>
+  <input type="submit" value="Submit">
+</form>

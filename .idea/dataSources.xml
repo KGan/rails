@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="2428419547">
+    <data-source source="LOCAL" name="Rails musicapp: development" uuid="0d89501d-2988-44cd-9207-3512eff5ab32">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1/music-app-dev</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails musicapp: test" uuid="d9b52397-fa47-4824-9e7f-77fcdc1ed7f7">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1/db/test.sqlite3</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails musicapp: production" uuid="4e9d0260-193f-450c-8802-f5d84abe434e">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1/db/production.sqlite3</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+
