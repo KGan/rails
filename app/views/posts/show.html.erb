@@ -5,6 +5,8 @@
 <%= render 'shared/comment_form', post: @post, commentable_type:@post.class.name, commentable_id:@post.id %>
 
 <h3>Comments:</h3>
-<% @post.comments.each do |comment| %>
-  <%= comment_tree(comment) %>
+<% if @all_comments %>
+  <% @post.comments.each do |comment| %>
+    <%= comment_tree(comment, @all_comments) %>
+  <% end %>
 <% end %>

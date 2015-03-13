@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @heirarchy = @post.posted_subs
-    @comments = @post.comments
+    @all_comments = @post.all_comments
   end
 
   def create

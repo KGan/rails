@@ -28,17 +28,24 @@ module ApplicationHelper
    html_string.html_safe
  end
 
- def comment_tree(commentable)
-   if commentable.comments.empty?
-     return "<li><pre>#{commentable.content}</pre></li>".html_safe
+ def comment_tree(commentable, post_comments)
+   children = post_comments.select do |elem|
+     (elem.commentable_id == commentable.id) && (elem.commentable_type = commentable.class.name)
+   end
+   html="<li><pre>#{commentable.content}</pre>#{reply(commentable)}</li>"
+   if children.empty?
+     return html.html_safe
    else
-     html = ""
-     commentable.comments.each do |comment|
-       html+="<li><pre>#{comment.content}</pre></li><ul>"
-       html+= comment_tree(comment)
+     children.each do |comment|
+       html+="<ul>"
+       html+= comment_tree(comment, post_comments)
        html+="</ul>"
      end
      html.html_safe
    end
+ end
+
+ def reply(comment)
+   link_to 'reply', comment_url(comment)
  end
 end
