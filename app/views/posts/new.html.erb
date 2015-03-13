@@ -1,0 +1,22 @@
+<h1>New REDDDDIIIITT Post</h1>
+
+<form action="<%= posts_url %>" method="POST">
+  <%= csrf_inject %>
+  <label>Title
+    <input name="post[title]" value="<%= @post.title %>" />
+  </label><br>
+  <label>Url
+    <input name="post[url]" value="<%= @post.url %>" />
+  </label><br>
+  <label>Content
+    <textarea name="post[content]" ><%= @post.content %></textarea>
+  </label><br>
+  <div> Posting to <%= @sub.title %>. Select additional subs to post to: </div><br>
+  <% Sub.all.each do |sub| %>
+    <input type="checkbox" name="post[posted_sub_ids][]" id="sub_<%=sub.id%>" value="<%= sub.id %>" <%= 'checked' if @post.posted_sub_ids.include?(sub.id) %>>
+    <label for="sub_<%=sub.id%>"><%= sub.title %></label>
+    <br>
+  <% end %>
+  <input type='hidden' name="post[posted_sub_ids][]" value="<%= @sub.id %>" />
+  <input type="submit" value="Submit" />
+</form>

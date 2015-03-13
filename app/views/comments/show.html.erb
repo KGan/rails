@@ -1,0 +1,4 @@
+<h1><%= @comment.user.email %> Said:</h1>
+<pre><%= @comment.content %></pre>
+
+<%= render 'shared/comment_form', post: @comment.post, commentable_id: @comment.id, commentable_type: @comment.class.name %>

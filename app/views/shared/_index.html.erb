@@ -1,0 +1,9 @@
+<% items.each do |item| %>
+
+<%= link_to item.title, url_h(item, nil, true), method: :get %>
+<% if owns?(item) %>
+  <%= button_to 'edit', url_h(item, nil, true), method: :get %>
+  <%= button_to 'delete', url_h(item, nil, true), method: :delete %>
+<% end %>
+
+<% end %>

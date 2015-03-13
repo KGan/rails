@@ -1,0 +1,13 @@
+<h1>New Sub</h1>
+
+<form action="<%=subs_url%>" method="post">
+  <%= csrf_inject %>
+  <label> Title
+    <input name="sub[title]" />
+  </label><br>
+  <label>
+    <textarea name="sub[description]"></textarea>
+  </label><br>
+
+  <input type='submit' value="Submit"/>
+</form>

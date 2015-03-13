@@ -1,0 +1,8 @@
+<form action="<%= comments_url %>" method="POST">
+  <%= csrf_inject %>
+  <textarea name="comment[content]" rows="10" cols="30"></textarea>
+  <input type="hidden" name="comment[post_id]" value="<%=post.id%>">
+  <input type="hidden" name="comment[commentable_id]" value="<%=commentable_id%>" >
+  <input type="hidden" name="comment[commentable_type]" value="<%=commentable_type%>">
+  <input type="submit" value="Submit" >
+</form>
