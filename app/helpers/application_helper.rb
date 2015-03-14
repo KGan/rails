@@ -29,9 +29,6 @@ module ApplicationHelper
  end
 
  def comment_tree(commentable, children_hash)
-  #  children = post_comments.select do |elem|
-  #    (elem.commentable_id == commentable.id) && (elem.commentable_type = commentable.class.name)
-  #  end
   children = children_hash[commentable.id]
    html="<li>#{render 'shared/comment', comment: commentable}</li>"
    if children.empty?

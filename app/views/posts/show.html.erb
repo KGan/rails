@@ -14,12 +14,15 @@
       <%= render 'votes/vote_form', votable_id: @post.id, votable_type: @post.class.name, url: @post.vote_url %>
     </div>
   </div>
+  Comment:
 <%= render 'shared/comment_form', post: @post, commentable_type:@post.class.name, commentable_id:@post.id %>
 
 <h3>Comments:</h3>
 <% if @children %>
-  <% @post.comments.each do |comment| %>
-    <%= comment_tree(comment, @children) %>
-  <% end %>
+  <ul>
+    <% @post.comments.each do |comment| %>
+        <%= comment_tree(comment, @children) %>
+    <% end %>
+  </ul>
 <% end %>
 </div>

@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      redirect_to @comment
+      redirect_to :back
     else
       flash[:errors] = @comment.errors.full_messages
       redirect_to :back
@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
 
   def show
     @comment = Comment.find(params[:id])
+    @children = @comment.post.comments_hash
   end
 
   def destroy

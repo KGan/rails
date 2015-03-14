@@ -25,8 +25,8 @@ input[type]:not([type="hidden"]) {
   margin: 2px;
 }
 textarea {
-  margin: 4px;
-  width: 60vw;
+  margin: 25px;
+  width: 60%;
 }
 
 .index_row {
@@ -39,3 +39,6 @@ textarea {
   background-color: aliceblue;
 }
 
+ul {
+  list-style-type: none;
+}
