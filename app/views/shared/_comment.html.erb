@@ -1,0 +1,5 @@
+
+  <h3><%= comment.user.email %></h3>
+  <pre><%= comment.content %></pre>
+  <%= button_to 'reply', comment_url(comment) %>
+  <%= render 'votes/vote_form', votable_id: comment.id, votable_type: comment.class.name %>
