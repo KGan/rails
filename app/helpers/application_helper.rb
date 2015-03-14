@@ -28,17 +28,18 @@ module ApplicationHelper
    html_string.html_safe
  end
 
- def comment_tree(commentable, post_comments)
-   children = post_comments.select do |elem|
-     (elem.commentable_id == commentable.id) && (elem.commentable_type = commentable.class.name)
-   end
-   html="<li><pre>#{commentable.content}</pre>#{reply(commentable)}</li>"
+ def comment_tree(commentable, children_hash)
+  #  children = post_comments.select do |elem|
+  #    (elem.commentable_id == commentable.id) && (elem.commentable_type = commentable.class.name)
+  #  end
+  children = children_hash[commentable.id]
+   html="<li>#{render 'shared/comment', comment: commentable}</li>"
    if children.empty?
      return html.html_safe
    else
      children.each do |comment|
        html+="<ul>"
-       html+= comment_tree(comment, post_comments)
+       html+= comment_tree(comment, children_hash)
        html+="</ul>"
      end
      html.html_safe
@@ -46,6 +47,5 @@ module ApplicationHelper
  end
 
  def reply(comment)
-   link_to 'reply', comment_url(comment)
  end
 end

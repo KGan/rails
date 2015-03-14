@@ -11,8 +11,15 @@ Rails.application.routes.draw do
     resources :posts, only: [:new]
   end
 
-  resources :posts, except: [:new, :edit, :update]
+  resources :posts, except: [:new, :edit, :update] do
+    member do
+      post 'upvote' => 'votes#create', as: :upvote
+      post 'downvote' => 'votes#create', as: :downvote
+    end
+  end
 
-  resources :comments, only: [:create, :destroy, :update, :show]
+  resources :comments, only: [:create, :destroy, :update, :show] do
+
+  end
 
 end

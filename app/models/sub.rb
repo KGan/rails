@@ -14,7 +14,6 @@ class Sub < ActiveRecord::Base
   validates_presence_of :title, :user
   validates_uniqueness_of :title
   belongs_to :user
-  has_many :posts
   has_many :post_subs, inverse_of: :sub, dependent: :destroy
-  has_many :cross_posts, through: :post_subs, source: :post
+  has_many :posts, through: :post_subs, source: :post
 end

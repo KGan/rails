@@ -20,7 +20,9 @@ class Post < ActiveRecord::Base
   has_many :all_comments, class_name: 'Comment',
                           foreign_key: :post_id,
                           primary_key: :id
+  has_many :votes, as: :votable
 
+  
   def comments_hash
     children = Hash.new(Array.new)
     all_comments.each do |comment|
