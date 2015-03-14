@@ -1,2 +1,3 @@
-<h1>Subs#index</h1>
-<p>Find me in app/views/subs/index.html.erb</p>
+<%= button_to 'Create a Subroodit', new_user_sub_url(current_user), method: :get, class: "btn btn-md btn-info" if logged_in? %>
+<%= render 'shared/index', items: @subs %>
+

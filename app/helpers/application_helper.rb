@@ -15,7 +15,7 @@ module ApplicationHelper
   end
 
   def owns?(item)
-    item.try(:user_id) == current_user.id
+    current_user.admin? || (item.try(:user_id) == current_user.id)
   end
 
   def render_heirarchy(heirarchy)
@@ -46,6 +46,6 @@ module ApplicationHelper
    end
  end
 
- def reply(comment)
- end
+
+
 end

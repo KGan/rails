@@ -13,10 +13,10 @@
 #
 
 class Comment < ActiveRecord::Base
+  include Votable
   validates_presence_of :content, :commentable, :user, :post
   belongs_to :user
   belongs_to :post
   belongs_to :commentable, polymorphic: true
   has_many :comments, as: :commentable
-  has_many :votes, as: :votable
 end

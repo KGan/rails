@@ -7,9 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div "pull-right sidebar" style='float:right'>
-    <%= render 'shared/navbar' %>
-  </div>
+  <%= render 'shared/navbar' %>
+
   <div "container contentbody" style='margin:25px'>
     <%= render 'shared/flashes' %>
     <%= yield %>

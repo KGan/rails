@@ -1,7 +1,17 @@
-<% if logged_in? %>
-  <h2> Hi <%= current_user.email %>
-  <%= button_to "Logout", session_url, method: :delete %>
-<% else %>
-  <%= button_to "Login", new_session_url, method: :get %>
-  <%= button_to "Sign Up", new_user_url, method: :get %>
-<% end %>
+<div class="navbar row">
+  <div class="col-md-8">
+    <ul class="nav nav-tabs">
+      <li role="presentation"><%= link_to "All Subs", subs_url %></li>
+    </ul>
+  </div>
+  <div class="col-md-4">
+    <% if logged_in? %>
+        <div class="greeting col-md-8">Logged in as: <%= link_to current_user.email, user_url(current_user) %></div>
+        <div class="logout col-md-4"><%= button_to "Logout", session_url, method: :delete %></div>
+    <% else %>
+        <div class="login col-md-6"><%= button_to "Login", new_session_url, method: :get %></div>
+        <div class="signup col-md-6"<%= button_to "Sign Up", new_user_url, method: :get %></div>
+    <% end %>
+  </div>
+</div>
+

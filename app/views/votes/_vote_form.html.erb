@@ -1,8 +1,8 @@
-<form>
+<form class="button-form" action="<%=url%>" method="POST" >
   <%= csrf_inject %>
 
   <input type="hidden"
-         name="vote[v]"
+         name="vote[val]"
          value="1">
 
   <input type="hidden"
@@ -13,15 +13,14 @@
          name="vote[votable_type]"
          value="<%= votable_type %>">
 
-  <input type="submit"
+  <input class="btn btn-sm btn-success button-form"
+         type="submit"
          value="Upvote">
-</form>
-<br>
-<form>
+</form><form class="button-form" action="<%=url%>" method="POST">
   <%= csrf_inject %>
 
   <input type="hidden"
-         name="vote[v]"
+         name="vote[val]"
          value="-1">
 
   <input type="hidden"
@@ -33,5 +32,6 @@
          value="<%= votable_type %>">
 
   <input type="submit"
+         class="btn btn-sm btn-danger button-form"
          value="Downvote">
 </form>

@@ -1,10 +1,26 @@
-<% items.each do |item| %>
-
-<%= link_to item.title, url_h(item, nil, true), method: :get %>
-<% if owns?(item) %>
-  <%= button_to 'edit', url_h(item, nil, true), method: :get %>
-  <%= button_to 'delete', url_h(item, nil, true), method: :delete %>
+<div class="list-group">
+<% items.each_with_index do |item, index| %>
+  <a class="list-group-item media" href="<%= url_h(item,nil,true) %>">
+    <%= render 'votes/vote_icon', votable: item %>
+    <div class="header media-body">
+      <div class="col-md-9">
+        <%= item.title %>
+      </div class="col-md-3">
+      <% if owns?(item) %>
+          <div class="col-md-6">
+            <%= button_to 'edit', url_h(item, nil, true), method: :get , class: "btn btn-sm button-index"%>
+          </div>
+          <div class="col-md-6">
+            <%= button_to 'delete', url_h(item, nil, true), method: :delete , class: "btn btn-sm btn-danger button-index"%>
+          </div>
+      <% end %>
+    </div>
+    <div class="options pull-right">
+      <% tuser = item.try(:user) %>
+      <% if tuser %>
+          Posted by <%= tuser.email %> at <%= item.created_at %>
+      <% end %>
+    </div>
+  </a>
 <% end %>
-<br>
-
-<% end %>
+</div>

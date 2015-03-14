@@ -12,10 +12,20 @@
 #
 
 class Vote < ActiveRecord::Base
+  validates_uniqueness_of :votable_id, scope:[:votable_type, :user_id]
   belongs_to :user
   belongs_to :votable, polymorphic: true
 
-  def v=(v)
-    self.value = (v <=> 0)
+
+  def val=(val)
+    self.value = (Integer(val) <=> 0)
+  end
+
+  def self.already_voted?(vote)
+    exists?(:votable_id => vote.votable_id, :user_id => vote.user_id, :votable_type => vote.votable_type, id: 1..Float::INFINITY)
+  end
+
+  def self.null_vote(vote)
+    find_by(:votable_id => vote.votable_id, :user_id => vote.user_id, :votable_type => vote.votable_type).destroy
   end
 end

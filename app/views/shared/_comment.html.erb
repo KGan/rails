@@ -1,5 +1,5 @@
 
   <h3><%= comment.user.email %></h3>
   <pre><%= comment.content %></pre>
-  <%= button_to 'reply', comment_url(comment) %>
-  <%= render 'votes/vote_form', votable_id: comment.id, votable_type: comment.class.name %>
+  <%= button_to 'reply', comment_url(comment), method: :get, class: "btn btn-md btn-info" %>
+  <%= render 'votes/vote_form', votable_id: comment.id, votable_type: comment.class.name, url:comment.vote_url %>

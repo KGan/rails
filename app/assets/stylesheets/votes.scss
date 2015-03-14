@@ -1,3 +1,26 @@
 // Place all the styles related to the Votes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.button-form {
+  display: inline;
+  radius: 4 px;
+}
+
+.button-index {
+  display: inline;
+  float: right;
+}
+
+.upvotes {
+  font-color: black;
+  padding: 3px 10px;
+  border-radius: 5px;
+  background-color:#6dff82;
+}
+
+.downvotes {
+  color: white;
+  padding: 3px 10px;
+  border-radius: 5px;
+  background-color:#ff6c62;
+}

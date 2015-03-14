@@ -12,6 +12,7 @@
 #
 
 class Post < ActiveRecord::Base
+  include Votable
   validates_presence_of :title, :user
   belongs_to :user
   has_many :post_subs, inverse_of: :post, dependent: :destroy
@@ -20,7 +21,6 @@ class Post < ActiveRecord::Base
   has_many :all_comments, class_name: 'Comment',
                           foreign_key: :post_id,
                           primary_key: :id
-  has_many :votes, as: :votable
 
   
   def comments_hash

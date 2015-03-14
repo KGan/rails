@@ -1,4 +1,4 @@
-<h1>New REDDDDIIIITT Post</h1>
+<h1>New Roodit Post</h1>
 
 <form action="<%= posts_url %>" method="POST">
   <%= csrf_inject %>
@@ -18,5 +18,5 @@
     <br>
   <% end %>
   <input type='hidden' name="post[posted_sub_ids][]" value="<%= @sub.id %>" />
-  <input type="submit" value="Submit" />
+  <input type="submit" class="btn btn-info" value="Submit" />
 </form>

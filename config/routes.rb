@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'users#index'
+  root to: 'subs#index'
 
   resources :users, except:[:edit, :update] do
     resources :subs, only: [:new]
@@ -13,13 +13,14 @@ Rails.application.routes.draw do
 
   resources :posts, except: [:new, :edit, :update] do
     member do
-      post 'upvote' => 'votes#create', as: :upvote
-      post 'downvote' => 'votes#create', as: :downvote
+      post 'vote' => 'votes#create', as: :vote
     end
   end
 
   resources :comments, only: [:create, :destroy, :update, :show] do
-
+    member do
+      post 'vote' => 'votes#create', as: :vote
+    end
   end
 
 end
