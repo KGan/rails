@@ -28,6 +28,16 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    if @post
+      @post.destroy
+    else
+      flash[:errors] = @post.errors.full_messages
+    end
+    redirect_to :back
+  end
+
   private
     def post_params
       params.require(:post).permit(:title, :url, :content, posted_sub_ids: []).merge({user_id: current_user.id})

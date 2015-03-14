@@ -13,6 +13,7 @@
   </label><br>
   <div> Posting to <%= @sub.title %>. Select additional subs to post to: </div><br>
   <% Sub.all.each do |sub| %>
+      <% next if sub.id == @sub.id %>
     <input type="checkbox" name="post[posted_sub_ids][]" id="sub_<%=sub.id%>" value="<%= sub.id %>" <%= 'checked' if @post.posted_sub_ids.include?(sub.id) %>>
     <label for="sub_<%=sub.id%>"><%= sub.title %></label>
     <br>

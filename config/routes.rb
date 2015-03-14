@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   resources :users, except:[:edit, :update] do
     resources :subs, only: [:new]
-    resources :posts, only: [:edit, :update]
   end
   resource :session, only:[:create, :new, :destroy]
 
@@ -11,7 +10,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:new]
   end
 
-  resources :posts, except: [:new, :edit, :update] do
+  resources :posts, except: [:new] do
     member do
       post 'vote' => 'votes#create', as: :vote
     end
