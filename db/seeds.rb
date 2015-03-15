@@ -2,6 +2,7 @@ num_users = 40
 num_subs = 25
 num_posts = 500
 num_comments = 800
+num_votes = 3000
 
 num_users.times do
   User.create!(email: Faker::Internet.email, password: 'pass')
@@ -31,4 +32,12 @@ num_comments.times do |i|
                   commentable_id: comment,
                   commentable_type: 'Comment',
                   post_id: Comment.find(comment).post_id)
+end
+
+num_votes.times do |i|
+  voter = i % num_users
+  v = Vote.new(value: [1,-1][rand(2)], user_id: voter, votable_id: rand(1..num_comments), votable_type: 'Comment')
+  v.save if v.valid?
+  v2 = Vote.create!(value: [1,-1][rand(2)], user_id: voter, votable_id: rand(1..post), votable_type: 'Post')
+  v2.save if v2.valid?
 end
