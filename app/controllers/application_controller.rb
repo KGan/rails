@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :logged_in?, :current_user
+  before_action :require_login
   Rails.application.routes.default_url_options[:host] = "localhost:3000"
 
   def login!(user)
@@ -17,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    User.find_by(session_token: session[:session_token])
+    @current_user ||= User.find_by(session_token: session[:session_token])
   end
 
   def logged_in?
@@ -27,7 +28,7 @@ class ApplicationController < ActionController::Base
   private
     def require_login
       if !logged_in?
-        redirect_to session_url
+        redirect_to new_session_url
       end
     end
 end

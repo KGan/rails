@@ -9,8 +9,9 @@
         <div class="greeting col-md-8">Logged in as: <%= link_to current_user.email, user_url(current_user) %></div>
         <div class="logout col-md-4"><%= button_to "Logout", session_url, method: :delete %></div>
     <% else %>
-        <div class="login col-md-6"><%= button_to "Login", new_session_url, method: :get %></div>
-        <div class="signup col-md-6"<%= button_to "Sign Up", new_user_url, method: :get %></div>
+        <div class="col-md-8"
+        <div class="col-md-2"><%= button_to "Login", new_session_url, method: :get %></div>
+        <div class="col-md-2"><%= button_to "Sign Up", new_user_url, method: :get %></div>
     <% end %>
   </div>
 </div>
