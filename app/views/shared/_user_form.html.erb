@@ -1,10 +1,20 @@
+<div class="col-md-3">
 <form action="<%= url %>" method="POST">
   <%= csrf_inject %>
-  <label> email
-    <input name="user[email]" />
-  </label> <br>
-  <label> password
-    <input type="password" name="user[password]" />
-  </label> <br>
-  <input type="submit" class="btn btn-info" value="Submit" />
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon" >Email</div>
+        <input name="user[email]" class="form-control" placeholder="Email@domain"/>
+      <!--</label>-->
+    </div>
+    <div class="input-group">
+      <div class="input-group-addon ">Password</div>
+        <input class="form-control" type="password" name="user[password]" placeholder="******"/>
+      <!--</label>-->
+    </div>
+  </div>
+
+
+  <input type="submit" class="btn btn-info form-control" value="Submit" />
 </form>
+</div>

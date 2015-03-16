@@ -6,6 +6,12 @@ class SubsController < ApplicationController
   def show
     @sub = Sub.find(params[:id])
     @posts = @sub.posts
+    @sort_field = params[:sort_field]
+    if @sort_field
+      @posts = @posts.sort do |post1, post2|
+        post1.send(@sort_field) <=> post2.send(@sort_field)
+      end.reverse!
+    end
   end
 
   def new

@@ -24,9 +24,10 @@ body {
 input[type]:not([type="hidden"]) {
   margin: 2px;
 }
-textarea {
-  margin: 25px;
-  width: 60%;
+
+
+.navbar {
+  font-size: 140%;
 }
 
 .index_row {
@@ -41,4 +42,17 @@ textarea {
 
 ul {
   list-style-type: none;
+}
+
+.input-group-addon {
+  min-width:10em;
+  text-align:right;
+}
+
+.alert-errors {
+  @extend .alert-danger;
+}
+
+.alert-notice {
+  @extend .alert-info;
 }
