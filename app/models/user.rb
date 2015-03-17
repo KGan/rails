@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   validates_presence_of :email, :password_digest, :session_token
   validates_uniqueness_of :session_token, :email
   after_initialize :ensure_session_token
+  has_many :comments
+  has_many :subs
 
   def password=(password)
     self.password_digest = BCrypt::Password.create(password)

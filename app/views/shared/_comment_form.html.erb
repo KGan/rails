@@ -1,8 +1,17 @@
-<form action="<%= comments_url %>" method="POST">
-  <%= csrf_inject %>
-  <textarea name="comment[content]" rows="10" cols="30"></textarea>
-  <input type="hidden" name="comment[post_id]" value="<%=post.id%>">
-  <input type="hidden" name="comment[commentable_id]" value="<%=commentable_id%>" >
-  <input type="hidden" name="comment[commentable_type]" value="<%=commentable_type%>">
-  <input type="submit" class="btn btn-info" value="Submit" >
-</form>
+<div class="col-md-7">
+  <form action="<%= comments_url %>" method="POST">
+    <%= csrf_inject %>
+    <div class="form-group">
+      <div class="input-group col-md-12">
+        <div class="input-group-addon">Comment: </div>
+        <textarea name="comment[content]" rows="10" class="form-control"></textarea>
+      </div>
+    </div>
+
+    <input type="hidden" name="comment[post_id]" value="<%=post.id%>">
+    <input type="hidden" name="comment[commentable_id]" value="<%=commentable_id%>" >
+    <input type="hidden" name="comment[commentable_type]" value="<%=commentable_type%>">
+    <input type="submit" class="btn btn-info form-control" value="Submit" >
+  </form>
+</div>
+

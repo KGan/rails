@@ -1,2 +1,7 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%=@user.email%></h1>
+<% @user.subs.each do |sub|%>
+<%= link_to sub.title, sub_url(sub) %>
+<% end %>
+<% @user.comments.each do |comment| %>
+<%= render 'shared/comment', comment:comment %>
+<% end %>

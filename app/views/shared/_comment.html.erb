@@ -2,10 +2,10 @@
   <%= render 'votes/vote_icon', votable:comment %>
   <div class="media-body">
     <div class="media-heading">
-      <h5><%= comment.user.email %></h5>
+      <h5><%= comment.user.email %><%= comment_options(comment) %></h5>
     </div>
     <pre><%= comment.content %></pre>
-    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#reply-modal">Reply</button>
+    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#reply-modal-<%=comment.id%>">Reply</button>
     <%= render 'votes/vote_form', votable_id: comment.id, votable_type: comment.class.name, url:comment.vote_url %>
 
     <%= render 'shared/comment_form_modal',  postid: comment.post_id, commentable_type:comment.class.name, commentable_id:comment.id %>

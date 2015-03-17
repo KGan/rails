@@ -15,6 +15,11 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
+    if @comment
+      @comment.destroy
+    end
+    redirect_to :back
   end
 
   def update

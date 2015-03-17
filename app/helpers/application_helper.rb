@@ -43,5 +43,20 @@ module ApplicationHelper
    end
  end
 
+  def comment_options(comment)
+    if comment.user_id == current_user.id
+      (<<-HTML).html_safe
+      <div class="dropdown">
+        <a class="dropdown-toggle"    href='#' data-toggle="dropdown"
+                                      role="button"
+                                      aria-expanded="false"><span class="caret"></span></a>
+        <ul class='dropdown-menu' role='menu'>
+            <li role="presentation" >#{link_to "Delete Comment", comment_url(comment), method: :delete }</li>
+        </ul>
+      </div>
+      HTML
+    end
+  end
+
   
 end

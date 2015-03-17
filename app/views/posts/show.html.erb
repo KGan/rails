@@ -2,27 +2,28 @@
   <%= render_heirarchy(@heirarchy) %>
   <div class="panel panel-default media">
     <div class="panel-body">
-        <%= render 'votes/vote_icon', votable:@post %>
-        <div class="media-body panel panel-default">
-            <div class="panel-heading">
-               <h2><%= @post.title %></h2> posted by <%= @post.user.email %>
-            </div>
-            <div class="panel-body"><%= @post.content %></div>
+      <%= render 'votes/vote_icon', votable:@post %>
+      <div class="media-body panel panel-default">
+        <div class="panel-heading">
+          <h2><%= @post.title %></h2> posted by <%= @post.user.email %>
         </div>
+        <div class="panel-body"><%= @post.content %></div>
+      </div>
     </div>
     <div class="panel-footer">
       <%= render 'votes/vote_form', votable_id: @post.id, votable_type: @post.class.name, url: @post.vote_url %>
     </div>
   </div>
-  Comment:
-<%= render 'shared/comment_form', post: @post, commentable_type:@post.class.name, commentable_id:@post.id %>
-
-<h3>Comments:</h3>
-<% if @children %>
-  <ul>
-    <% @post.comments.each do |comment| %>
-        <%= comment_tree(comment, @children) %>
+  <%= render 'shared/comment_form', post: @post, commentable_type:@post.class.name, commentable_id:@post.id %>
+  <div class="col-md-12">
+    <h3>Comments:</h3>
+    <% if @children %>
+        <ul>
+          <% @post.comments.each do |comment| %>
+              <%= comment_tree(comment, @children) %>
+          <% end %>
+        </ul>
     <% end %>
-  </ul>
-<% end %>
+  </div>
+
 </div>

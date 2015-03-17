@@ -23,7 +23,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_many :post_subs, inverse_of: :post, dependent: :destroy
   has_many :posted_subs, through: :post_subs, source: :sub
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
   has_many :votes, as: :votable
   has_many :all_comments, class_name: 'Comment',
                           foreign_key: :post_id,
