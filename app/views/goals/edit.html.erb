@@ -1,0 +1,7 @@
+<h1>Edit Goal</h1>
+<%= render 'goals/goal_form',
+  url: goal_url(@goal),
+  goal: @goal,
+  form_class: 'edit-goal',
+  method: :patch
+%>
