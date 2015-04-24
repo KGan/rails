@@ -1,0 +1,11 @@
+<table>
+<% indexed.each do |ind| %>
+  <th>
+    <td><%= link_to ind.name, helpz(ind, nil, true) %></td>
+   <% if owns?(ind) %>
+       <td><%= button_to "Edit", helpz(ind, 'edit', true), :method => :get %></td>
+       <td><%= button_to "Delete", helpz(ind, nil, true), :method => :delete %></td>
+  <% end %>
+   </th>
+<% end %>
+</table>

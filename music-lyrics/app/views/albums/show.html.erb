@@ -1,0 +1,6 @@
+<h1><%= @album.name %></h1>
+<h3>Navigate: <%= render_heirarchy(@heirarchy) %></h3>
+
+Tracks :<br>
+<%= render 'shared/index', indexed: @album.tracks %>
+<%= button_to("Add Track to #{@album.name}", new_album_track_url(@album), method: :get)  %>

@@ -1,0 +1,16 @@
+<form action="<%= route %>" method="POST">
+  <%= csrf_inject %>
+  <%= method_n(method_name) %>
+  <label> email:
+    <input type="text" name="user[email]" value="" />
+  </label> <br>
+  <label><%= edit_user ? "Old Password" : "Password" %>
+    <input type="password" name="user[password]" />
+  </label>
+  <% if edit_user %>
+    <label>
+      <input type="password" name="user[new_pass]" />
+    </label>
+  <% end %>
+  <input type="submit" value="Submit" />
+</form>
