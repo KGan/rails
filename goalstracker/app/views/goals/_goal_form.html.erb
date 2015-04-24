@@ -1,0 +1,25 @@
+<form class="<%= form_class %>" action="<%= url %>" method="POST">
+  <%= csrf_tag %>
+  <%= method_name(method) %>
+  <label>Goal<input name='goal[title]' value="<%= goal.title %>"></label>
+  <label>Type
+    <% Goal::TYPES.each do |type| %>
+      <label><%=type.downcase %><input type="radio" name="goal[goaltype]"
+                <% "selected" if goal.goaltype == type %>
+                value="<%=type%>">
+      </label>
+
+    <% end %>
+  </label>
+
+  <label>Status
+    <select name="goal[status]">
+    <% Goal::STATUSES.each do |status| %>
+      <option <% "selected" if goal.status == status %> value="<%=status%>" >
+        <%= status %>
+      </option>
+    <% end %>
+  </select>
+  </label>
+  <input type=submit value=Submit >
+</form>

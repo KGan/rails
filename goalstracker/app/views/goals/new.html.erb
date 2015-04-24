@@ -1,0 +1,8 @@
+<h1>New Goal</h1>
+
+<%= render 'goals/goal_form',
+  url: goals_url,
+  method: 'POST',
+  form_class: 'new-goal',
+  goal: @goal
+%>
