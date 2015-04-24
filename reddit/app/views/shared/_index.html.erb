@@ -1,0 +1,31 @@
+<div class="list-group">
+<% items.each_with_index do |item, index| %>
+  <div class="list-group-item media">
+    <%= render 'votes/vote_icon', votable: item %>
+    <div class="header media-body">
+      <a href="<%= url_h(item,nil,true) %>">
+          <p class='h4 lead'>
+            <%= item.title %><br>
+            <small><%= "#{item.all_comments.count}" + ' replies' if item.try(:all_comments) %></small>
+          </p>
+      </a>
+    </div>
+     <div class="col-md-1">
+       <% if owns?(item) %>
+           <div class="col-md-6">
+             <%= button_to 'edit', url_h(item, nil, true)+"/edit", method: :get , class: "btn btn-sm button-index"%>
+           </div>
+           <div class="col-md-6">
+             <%= button_to 'delete', url_h(item, nil, true), method: :delete , class: "btn btn-sm btn-danger button-index"%>
+           </div>
+       <% end %>
+     </div>
+    <div class="col-md-6 options pull-right text-right">
+      <% tuser = item.try(:user) %>
+      <% if tuser %>
+          <mark>Posted by <%= tuser.email %> at <%= item.created_at %></mark>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+</div>

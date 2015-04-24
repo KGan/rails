@@ -1,0 +1,37 @@
+<form class="button-form" action="<%=url%>" method="POST" >
+  <%= csrf_inject %>
+
+  <input type="hidden"
+         name="vote[val]"
+         value="1">
+
+  <input type="hidden"
+         name="vote[votable_id]"
+         value="<%= votable_id %>">
+
+  <input type="hidden"
+         name="vote[votable_type]"
+         value="<%= votable_type %>">
+
+  <input class="btn btn-sm btn-success button-form"
+         type="submit"
+         value="Upvote">
+</form><form class="button-form" action="<%=url%>" method="POST">
+  <%= csrf_inject %>
+
+  <input type="hidden"
+         name="vote[val]"
+         value="-1">
+
+  <input type="hidden"
+         name="vote[votable_id]"
+         value="<%= votable_id %>">
+
+  <input type="hidden"
+         name="vote[votable_type]"
+         value="<%= votable_type %>">
+
+  <input type="submit"
+         class="btn btn-sm btn-danger button-form"
+         value="Downvote">
+</form>

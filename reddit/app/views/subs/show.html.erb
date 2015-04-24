@@ -1,0 +1,14 @@
+<h1>Posts for <%= @sub.title %></h1><nav class="navbar">
+  <ul class="nav nav-tabs">
+    <% Post::SORTABLES.each do |sortable| %>
+        <li role="presentation" <% if @sort_field && (sortable[:field] == @sort_field.to_sym) %>
+                                    class="active"
+                                <% end %>>
+          <%= link_to sortable[:name], sub_url(@sub, sort_field: sortable[:field]) %>
+        </li>
+    <% end %>
+  </ul>
+
+</nav>
+<%= button_to 'Create a new post', new_sub_post_url(@sub), method: :get, class: "btn btn-md btn-info" %>
+<%= render 'shared/index', items: @posts %>

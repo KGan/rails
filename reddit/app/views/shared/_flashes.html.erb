@@ -1,0 +1,12 @@
+<% flash.each do |key, message| %>
+  <div class="alert alert-<%=key%>">
+    <a href="#" data-dismiss="alert" class="close">x</a>
+      <% if flash[key].is_a?(Array) %>
+        <% flash[key].each do |mesg| %>
+           <p><%= mesg %></p>
+         <% end %>
+      <% else %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+<% end %>
